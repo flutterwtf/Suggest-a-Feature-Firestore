@@ -6,20 +6,22 @@ import 'package:test/test.dart';
 import 'utils/mocked_entities.dart';
 
 void main() {
-  final FakeFirebaseFirestore fakeFirestoreInstance = FakeFirebaseFirestore();
+  final fakeFirestoreInstance = FakeFirebaseFirestore();
   late final Suggestion suggestionWithId;
   late final Comment commentWithId;
 
-  final FirestoreDataSource firestoreDataSource = FirestoreDataSource(
+  final firestoreDataSource = FirestoreDataSource(
     userId: '1',
     firestoreInstance: fakeFirestoreInstance,
   );
 
   group('firestore data source', () {
     test('get suggestion by id', () async {
-      final Suggestion result = await firestoreDataSource
-          .createSuggestion(mockedCreateSuggestionModel);
+      final result = await firestoreDataSource.createSuggestion(
+        mockedCreateSuggestionModel,
+      );
       suggestionWithId = mockedSuggestion.copyWith(id: result.id);
+
       expect(
         await firestoreDataSource.getSuggestionById(suggestionWithId.id),
         suggestionWithId,
@@ -29,13 +31,15 @@ void main() {
     test('get all suggestions', () async {
       expect(
         await firestoreDataSource.getAllSuggestions(),
-        <Suggestion>[suggestionWithId],
+        [suggestionWithId],
       );
     });
 
     test('update suggestion', () async {
-      final Suggestion updatedSuggestion =
-          suggestionWithId.copyWith(title: 'Edited title');
+      final updatedSuggestion = suggestionWithId.copyWith(
+        title: 'Edited title',
+      );
+
       expect(
         await firestoreDataSource.updateSuggestion(updatedSuggestion),
         updatedSuggestion,
@@ -43,40 +47,45 @@ void main() {
     });
 
     test('upvote', () async {
-      expect(firestoreDataSource.upvote(suggestionWithId.id), Future<void>);
+      expect(
+        firestoreDataSource.upvote(suggestionWithId.id),
+        isA<Future<void>>(),
+      );
     });
 
     test('downvote', () async {
       expect(
         firestoreDataSource.downvote(suggestionWithId.id),
-        Future<void>,
+        isA<Future<void>>(),
       );
     });
 
     test('get all comments', () async {
-      final CreateCommentModel mockedCreateCommentModel = CreateCommentModel(
+      final mockedCreateCommentModel = CreateCommentModel(
         authorId: mockedComment.author.id,
         isAnonymous: mockedComment.isAnonymous,
         text: mockedComment.text,
         suggestionId: suggestionWithId.id,
         isFromAdmin: false,
       );
-      final Comment result =
-          await firestoreDataSource.createComment(mockedCreateCommentModel);
+      final result = await firestoreDataSource.createComment(
+        mockedCreateCommentModel,
+      );
       commentWithId = mockedComment.copyWith(
         id: result.id,
         suggestionId: suggestionWithId.id,
       );
+
       expect(
         await firestoreDataSource.getAllComments(suggestionWithId.id),
-        <Comment>[commentWithId],
+        [commentWithId],
       );
     });
 
     test('delete comment', () async {
       expect(
         firestoreDataSource.deleteCommentById(commentWithId.id),
-        Future<void>,
+        isA<Future<void>>(),
       );
     });
   });

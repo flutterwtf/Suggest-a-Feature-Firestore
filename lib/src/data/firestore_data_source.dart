@@ -208,15 +208,18 @@ class FirestoreDataSource implements SuggestionsDataSource {
   Future<List<String>> _getSuggestionVotes(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
     final suggestion = suggestionObject.data()!;
+    final votes = suggestion[_votedUsersArrayName] as List<dynamic>?;
 
-    return (suggestion[_votedUsersArrayName] as List<String>?) ?? [];
+    return votes == null ? [] : votes.cast<String>();
   }
 
   Future<List<String>> _getSuggestionNotifications(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
     final suggestion = suggestionObject.data()!;
+    final notifications =
+        suggestion[_notificationsUsersArrayName] as List<dynamic>?;
 
-    return (suggestion[_notificationsUsersArrayName] as List<String>?) ?? [];
+    return notifications == null ? [] : notifications.cast<String>();
   }
 
   Future<bool> _isUserAuthor(_Entity entity, String entityId) async {

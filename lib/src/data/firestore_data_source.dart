@@ -155,9 +155,8 @@ class FirestoreDataSource implements SuggestionsDataSource {
       );
     }
 
-    // TODO(dev): check this
-    return _suggestions.doc(suggestionId).update(<String, List<String>>{
-      _notificationsUsersArrayName: [...userIdsToNotify, userId]
+    return _suggestions.doc(suggestionId).update({
+      _notificationsUsersArrayName: [...userIdsToNotify, userId],
     });
   }
 
@@ -171,12 +170,9 @@ class FirestoreDataSource implements SuggestionsDataSource {
     }
     userIdsToNotify.remove(userId);
 
-    // TODO(dev): check it
-    return _suggestions.doc(suggestionId).update(
-      <String, List<String>>{
-        _notificationsUsersArrayName: userIdsToNotify,
-      },
-    );
+    return _suggestions.doc(suggestionId).update({
+      _notificationsUsersArrayName: userIdsToNotify,
+    });
   }
 
   @override
@@ -188,8 +184,7 @@ class FirestoreDataSource implements SuggestionsDataSource {
       );
     }
 
-    // TODO(dev): check it
-    return _suggestions.doc(suggestionId).update(<String, List<String>>{
+    return _suggestions.doc(suggestionId).update({
       _votedUsersArrayName: [...votedUserIds, userId]
     });
   }
@@ -205,57 +200,48 @@ class FirestoreDataSource implements SuggestionsDataSource {
     }
     votedUserIds.remove(userId);
 
-    // TODO(dev): check it
-    return _suggestions.doc(suggestionId).update(
-      <String, List<String>>{_votedUsersArrayName: votedUserIds},
-    );
+    return _suggestions.doc(suggestionId).update({
+      _votedUsersArrayName: votedUserIds,
+    });
   }
 
   Future<List<String>> _getSuggestionVotes(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
     final suggestion = suggestionObject.data()!;
 
-    if (suggestion[_votedUsersArrayName] == null) {
-      return [];
-    }
-
-    // TODO(dev): check it
-    return (suggestion[_votedUsersArrayName] as List<dynamic>).cast<String>();
+    return (suggestion[_votedUsersArrayName] as List<String>?) ?? [];
   }
 
   Future<List<String>> _getSuggestionNotifications(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
     final suggestion = suggestionObject.data()!;
 
-    if (suggestion[_notificationsUsersArrayName] == null) {
-      return [];
-    }
-
-    // TODO(dev): check it
-    return (suggestion[_notificationsUsersArrayName] as List<dynamic>)
-        .cast<String>();
+    return (suggestion[_notificationsUsersArrayName] as List<String>?) ?? [];
   }
 
   Future<bool> _isUserAuthor(_Entity entity, String entityId) async {
     final QuerySnapshot<Map<String, dynamic>> response;
 
-    // TODO(dev): check it
     switch (entity) {
       case _Entity.suggestion:
         response = await _suggestions
-            .where(_authorIdFieldName, isEqualTo: userId)
+            .where(
+              _authorIdFieldName,
+              isEqualTo: userId,
+            )
             .get();
         break;
       case _Entity.comment:
-        response =
-            await _comments.where(_authorIdFieldName, isEqualTo: userId).get();
+        response = await _comments
+            .where(
+              _authorIdFieldName,
+              isEqualTo: userId,
+            )
+            .get();
         break;
     }
 
-    // TODO(dev): check it
-    final List<QueryDocumentSnapshot<Object?>> documents = response.docs
-        .where((QueryDocumentSnapshot<Object?> e) => e.id == entityId)
-        .toList();
+    final documents = response.docs.where((e) => e.id == entityId);
 
     return documents.length == 1;
   }

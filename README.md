@@ -3,6 +3,18 @@
 This package is a data source extension for
 [suggest_a_feature](https://pub.dev/packages/suggest_a_feature) package.
 
+<p align="center">
+  <a href="https://pub.dartlang.org/packages/suggest_a_feature_firestore">
+    <img alt="Pub" src="https://img.shields.io/pub/v/suggest_a_feature_firestore"/>
+  </a>
+  <a href="https://github.com/What-the-Flutter/Suggest-a-Feature-Firestore/actions/workflows/build.yml?query=workflow%3ABuild">
+    <img alt="Build Status" src="https://github.com/What-the-Flutter/Suggest-a-Feature-Firestore/actions/workflows/build.yml/badge.svg?event=push"/>
+  </a>
+  <a href="https://www.codefactor.io/repository/github/what-the-flutter/suggest-a-feature-firestore">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/what-the-flutter/suggest-a-feature-firestore/badge"/>
+  </a>
+</p>
+
 ## Getting started
 
 ```yaml

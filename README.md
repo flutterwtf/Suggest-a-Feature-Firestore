@@ -1,6 +1,21 @@
-## Getting started
+# Suggest a Feature Firestore
 
-This package is a data source extension for suggest_a_feature package.
+This package is a data source extension for
+[suggest_a_feature](https://pub.dev/packages/suggest_a_feature) package.
+
+<p align="center">
+  <a href="https://pub.dartlang.org/packages/suggest_a_feature_firestore">
+    <img alt="Pub" src="https://img.shields.io/pub/v/suggest_a_feature_firestore"/>
+  </a>
+  <a href="https://github.com/What-the-Flutter/Suggest-a-Feature-Firestore/actions/workflows/build.yml?query=workflow%3ABuild">
+    <img alt="Build Status" src="https://github.com/What-the-Flutter/Suggest-a-Feature-Firestore/actions/workflows/build.yml/badge.svg?event=push"/>
+  </a>
+  <a href="https://www.codefactor.io/repository/github/what-the-flutter/suggest-a-feature-firestore">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/what-the-flutter/suggest-a-feature-firestore/badge"/>
+  </a>
+</p>
+
+## Getting started
 
 ```yaml
 dependencies:
@@ -9,11 +24,9 @@ dependencies:
 ```
 
 You need to add Firebase to your project following steps described in this link from official firebase website:
-https://console.firebase.google.com/ 
+<https://console.firebase.google.com/>
 
 ## Usage
-
-First of all you need to
 
 You need to place `FirestoreDataSource` class as a `suggestionsDataSource` field in `SuggestionsPage` widget. Don't forget to place `FirebaseFirestore.instance` as `firestoreInstance` field in `FirestoreDataSource` class.
 For example:
@@ -34,7 +47,7 @@ SuggestionsPage(
 
 ## Firestore rules
 
-You also must add following rules to your Firestore in Firebase Console.
+You also must add following rules to your *Firestore* in *Firebase Console*:
 
 ```dart
 match /suggest_a_feature_suggestions/{suggest_a_feature_suggestion}{

@@ -207,17 +207,17 @@ class FirestoreDataSource implements SuggestionsDataSource {
 
   Future<List<String>> _getSuggestionVotes(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
-    final suggestion = suggestionObject.data()!;
-    final votes = suggestion[_votedUsersArrayName] as List<dynamic>?;
+    final suggestion = suggestionObject.data();
+    final votes = suggestion?[_votedUsersArrayName] as List<dynamic>?;
 
     return votes == null ? [] : votes.cast<String>();
   }
 
   Future<List<String>> _getSuggestionNotifications(String suggestionId) async {
     final suggestionObject = await _suggestions.doc(suggestionId).get();
-    final suggestion = suggestionObject.data()!;
+    final suggestion = suggestionObject.data();
     final notifications =
-        suggestion[_notificationsUsersArrayName] as List<dynamic>?;
+        suggestion?[_notificationsUsersArrayName] as List<dynamic>?;
 
     return notifications == null ? [] : notifications.cast<String>();
   }
@@ -253,7 +253,13 @@ class FirestoreDataSource implements SuggestionsDataSource {
     _Entity entity,
     DocumentSnapshot<Map<String, dynamic>> item,
   ) {
-    final rawData = item.data()!;
+    final rawData = item.data();
+    if (rawData == null) {
+      throw Exception(
+        'An error occurred while trying to retrieve the data from the '
+        'database. The data returned was null, which is unexpected. ',
+      );
+    }
     switch (entity) {
       case _Entity.comment:
         rawData[_commentIdFieldName] = item.id;

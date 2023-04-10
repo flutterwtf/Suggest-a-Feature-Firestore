@@ -22,7 +22,7 @@ jobs:
 
       - name: Initialize
         run: flutter pub get
-      
+
       - name: Analyze
         run: flutter analyze
 

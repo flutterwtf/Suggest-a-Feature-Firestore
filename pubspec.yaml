@@ -1,22 +1,19 @@
 name: suggest_a_feature_firestore
 description: A package that contains the firestore based data source for suggest_a_feature.
 version: 0.0.1
-publish_to: none
+repository: https://github.com/What-the-Flutter/Suggest-a-Feature-Firestore
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
-  cloud_firestore: ^4.3.2
+  cloud_firestore: ^4.5.0
 
-  suggest_a_feature:
-    git:
-      url: 'https://github.com/What-the-Flutter/Suggest-a-Feature'
-      ref: master
+  suggest_a_feature: ^0.0.1
 
   very_good_analysis: ^4.0.0+1
 
 dev_dependencies:
-  fake_cloud_firestore: ^2.3.0+3
+  fake_cloud_firestore: ^2.4.1+1
   lints: ^2.0.1
-  test: ^1.16.0
+  test: ^1.22.0

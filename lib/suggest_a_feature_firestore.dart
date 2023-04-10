@@ -1,4 +1,4 @@
-/// A package that contains the firestore based data source 
+/// A package that contains the firestore based data source
 /// for **suggest_a_feature**.
 library suggest_a_feature_firestore;
 

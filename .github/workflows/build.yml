@@ -4,7 +4,7 @@ on:
   push:
     branches: [ dev ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev, master ]
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Initialize
         run: flutter pub get
-      
+
       - name: Analyze
         run: flutter analyze
 

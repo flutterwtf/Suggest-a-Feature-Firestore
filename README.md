@@ -1,7 +1,18 @@
 # Suggest a Feature Firestore
 
-This package is a data source extension for
-[suggest_a_feature](https://pub.dev/packages/suggest_a_feature) package.
+<p align="center">
+  <a href="https://flutter.wtf/">
+    <img alt="What the Flutter" src="https://static.tildacdn.com/tild6330-3461-4139-a163-666435336663/Group_13.svg" height=140/>
+  </a>
+</p>
+
+<p align="center">
+  <h3 align="center">Crafted with passion by
+    <a href="https://flutter.wtf/">
+    What the Flutter
+    </a> 🦜
+  </h3>
+</p>
 
 <p align="center">
   <a href="https://pub.dartlang.org/packages/suggest_a_feature_firestore">
@@ -14,6 +25,11 @@ This package is a data source extension for
     <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/what-the-flutter/suggest-a-feature-firestore/badge"/>
   </a>
 </p>
+
+---
+
+This package is a data source extension for
+[suggest_a_feature](https://pub.dev/packages/suggest_a_feature) package.
 
 ## Getting started
 

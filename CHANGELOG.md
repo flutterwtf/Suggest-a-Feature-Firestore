@@ -1,3 +1,8 @@
+## 0.1.0
+* Flutter 3.10 support
+* Dart 3 support
+* suggest_a_feature 0.1.0 support
+
 ## 0.0.3
 * Updated dependencies
 

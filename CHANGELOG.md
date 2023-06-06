@@ -1,3 +1,6 @@
+## 0.1.1
+* Updated dependencies
+
 ## 0.1.0
 * Flutter 3.10 support
 * Dart 3 support

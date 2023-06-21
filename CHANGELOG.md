@@ -1,3 +1,6 @@
+## 0.1.2
+* suggest_a_feature 0.1.2 support
+
 ## 0.1.1
 * Updated dependencies
 

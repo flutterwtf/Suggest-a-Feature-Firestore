@@ -11,7 +11,7 @@ dependencies:
   cloud_firestore: ^4.8.0
   flutter:
     sdk: flutter
-  suggest_a_feature: ^0.1.1
+  suggest_a_feature: ^0.1.2
 
 dev_dependencies:
   fake_cloud_firestore: ^2.4.1+1

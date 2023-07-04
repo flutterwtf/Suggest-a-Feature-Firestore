@@ -1,3 +1,8 @@
+## 0.2.0
+* Dart 3.0.0 is now the minimum version
+* suggest_a_feature 0.2.0 support
+* Updated dependencies
+
 ## 0.1.2
 * suggest_a_feature 0.1.2 support
 

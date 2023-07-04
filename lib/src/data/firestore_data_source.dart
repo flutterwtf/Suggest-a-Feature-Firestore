@@ -233,7 +233,6 @@ class FirestoreDataSource implements SuggestionsDataSource {
               isEqualTo: userId,
             )
             .get();
-        break;
       case _Entity.comment:
         response = await _comments
             .where(
@@ -241,7 +240,6 @@ class FirestoreDataSource implements SuggestionsDataSource {
               isEqualTo: userId,
             )
             .get();
-        break;
     }
 
     final documents = response.docs.where((e) => e.id == entityId);
@@ -263,10 +261,8 @@ class FirestoreDataSource implements SuggestionsDataSource {
     switch (entity) {
       case _Entity.comment:
         rawData[_commentIdFieldName] = item.id;
-        break;
       case _Entity.suggestion:
         rawData[_suggestionIdFieldName] = item.id;
-        break;
     }
 
     return rawData;

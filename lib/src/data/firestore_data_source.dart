@@ -17,10 +17,12 @@ class FirestoreDataSource implements SuggestionsDataSource {
 
   @override
   final String userId;
+  final bool isAdmin;
 
   FirestoreDataSource({
     required this.userId,
     required FirebaseFirestore firestoreInstance,
+    this.isAdmin = false,
     this.suggestionsCollectionPath = 'suggest_a_feature_suggestions',
     this.commentsCollectionPath = 'suggest_a_feature_comments',
   }) : _firestoreInstance = firestoreInstance;
@@ -69,7 +71,7 @@ class FirestoreDataSource implements SuggestionsDataSource {
 
   @override
   Future<Suggestion> updateSuggestion(Suggestion suggestion) async {
-    if (!await _isUserAuthor(_Entity.suggestion, suggestion.id)) {
+    if (!await _isUserAuthor(_Entity.suggestion, suggestion.id) && !isAdmin) {
       throw Exception(
         'Failed to update the suggestion. User has no author rights',
       );
@@ -81,7 +83,7 @@ class FirestoreDataSource implements SuggestionsDataSource {
 
   @override
   Future<void> deleteSuggestionById(String suggestionId) async {
-    if (!await _isUserAuthor(_Entity.suggestion, suggestionId)) {
+    if (!await _isUserAuthor(_Entity.suggestion, suggestionId) && !isAdmin) {
       throw Exception(
         'Failed to update the suggestion. User has no author rights',
       );
@@ -115,7 +117,7 @@ class FirestoreDataSource implements SuggestionsDataSource {
 
   @override
   Future<void> deleteCommentById(String commentId) async {
-    if (!await _isUserAuthor(_Entity.comment, commentId)) {
+    if (!await _isUserAuthor(_Entity.comment, commentId) && !isAdmin) {
       throw Exception(
         'Failed to update the suggestion. User has no author rights',
       );

@@ -1,3 +1,6 @@
+## 0.3.0
+* Allow admin to edit/delete suggestions and comments
+
 ## 0.2.0
 * Dart 3.0.0 is now the minimum version
 * suggest_a_feature 0.2.0 support

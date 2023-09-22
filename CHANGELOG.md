@@ -1,3 +1,6 @@
+## 0.4.0
+* Updated dependencies
+
 ## 0.3.0
 * Allow admin to edit/delete suggestions and comments
 

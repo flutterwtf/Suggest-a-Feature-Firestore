@@ -187,7 +187,7 @@ class FirestoreDataSource implements SuggestionsDataSource {
     }
 
     return _suggestions.doc(suggestionId).update({
-      _votedUsersArrayName: [...votedUserIds, userId]
+      _votedUsersArrayName: [...votedUserIds, userId],
     });
   }
 
